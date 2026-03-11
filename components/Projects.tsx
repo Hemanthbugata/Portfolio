@@ -99,17 +99,77 @@ export default function Projects() {
       linkText: "Architecture Project",
       tags: ["Kubernetes", "Microservices", "Istio", "Spring Boot", "DevOps"],
       gradient: "from-orange-500 to-red-500"
+    },
+    {
+      title: "Foundry",
+      subtitle: "Central Registry of Reusable Production-Ready Components",
+      description: "A comprehensive component registry featuring copy-paste production-ready code snippets across frontend, backend, database, and DevOps domains. Enterprise-ready patterns with secure admin governance and public read-only access for team collaboration.",
+      features: [
+        "Copy-paste production-ready code snippets",
+        "Full-stack React + FastAPI solution",
+        "Language-aware formatting with one-click copy",
+        "Enterprise-grade component management",
+        "Secure JWT authentication",
+        "Public read-only sharing capabilities"
+      ],
+      link: "https://foundry-0v8v.onrender.com/",
+      linkText: "Visit Foundry",
+      tags: ["React", "TypeScript", "FastAPI", "SQLAlchemy", "Full-Stack"],
+      gradient: "from-indigo-500 to-blue-500"
+    },
+    {
+      title: "ShowTimeX",
+      subtitle: "Full-Stack Movie Ticket Booking Platform",
+      description: "A complete movie ticket booking application with user authentication, advanced search, interactive booking system, and admin dashboard for content management. Built with modern React frontend and Python FastAPI backend.",
+      features: [
+        "User authentication and signup system",
+        "Movie browsing with advanced search",
+        "Interactive ticket booking and management",
+        "Admin dashboard for movies and bookings",
+        "Responsive design with modern UI",
+        "RESTful API architecture"
+      ],
+      link: "https://github.com/gh-ust-bugatahemanth-naidu/ShowTimeX.git",
+      linkText: "View on GitHub",
+      tags: ["React", "TypeScript", "FastAPI", "SQLite", "Vite", "Full-Stack"],
+      gradient: "from-pink-500 to-rose-500"
     }
   ]
 
   return (
-    <section id="projects" className="py-20 px-4 bg-slate-800/50" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="py-20 px-4 bg-primary-100/50 relative overflow-hidden" ref={ref}>
+      {/* Background decorations */}
+      <motion.div 
+        className="absolute top-0 left-10 w-80 h-80 bg-primary-300/15 rounded-full blur-3xl"
+        animate={{ 
+          scale: [1, 1.1, 1],
+          opacity: [0.3, 0.5, 0.3]
+        }}
+        transition={{ 
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-10 right-10 w-96 h-96 bg-primary-200/10 rounded-full blur-3xl"
+        animate={{ 
+          scale: [1, 0.9, 1],
+          opacity: [0.2, 0.4, 0.2]
+        }}
+        transition={{ 
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-black via-primary-700 to-primary-600 bg-clip-text text-transparent"
         >
           Featured Projects
         </motion.h2>
@@ -124,23 +184,23 @@ export default function Projects() {
               whileHover={{ y: -10 }}
               className="group relative"
             >
-              <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-20 rounded-xl blur-xl transition-all duration-300`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-15 rounded-xl blur-xl transition-all duration-300`}></div>
               
-              <div className="relative bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 group-hover:border-white/20 transition-all duration-300 h-full flex flex-col">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-xl p-8 border-2 border-primary-200 group-hover:border-primary-500 transition-all duration-300 h-full flex flex-col shadow-lg hover:shadow-xl hover:shadow-primary-300/20">
                 <div className="flex-grow">
-                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-2xl font-bold text-black mb-2 group-hover:text-primary-700 transition-colors">
                     {project.title}
                   </h3>
-                  <h4 className="text-lg text-blue-400 mb-4 opacity-80">
+                  <h4 className="text-lg text-primary-600 font-semibold mb-4 opacity-90">
                     {project.subtitle}
                   </h4>
                   
-                  <p className="text-gray-400 mb-6 leading-relaxed">
+                  <p className="text-gray-700 mb-6 leading-relaxed">
                     {project.description}
                   </p>
 
                   <div className="mb-6">
-                    <h5 className="text-white font-semibold mb-3">Key Features:</h5>
+                    <h5 className="text-black font-bold mb-3">Key Features:</h5>
                     <ul className="space-y-2">
                       {project.features.map((feature, featureIndex) => (
                         <motion.li
@@ -148,9 +208,9 @@ export default function Projects() {
                           initial={{ opacity: 0, x: -20 }}
                           animate={isInView ? { opacity: 1, x: 0 } : {}}
                           transition={{ duration: 0.5, delay: index * 0.2 + featureIndex * 0.1 + 0.5 }}
-                          className="text-gray-300 flex items-start"
+                          className="text-gray-700 flex items-start"
                         >
-                          <span className="text-blue-400 mr-2 mt-1">•</span>
+                          <span className="text-primary-600 mr-2 mt-1 font-bold">•</span>
                           {feature}
                         </motion.li>
                       ))}
@@ -161,7 +221,7 @@ export default function Projects() {
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-3 py-1 text-xs bg-white/10 text-blue-300 rounded-full border border-blue-400/30"
+                        className="px-3 py-1 text-xs bg-primary-100 text-primary-700 rounded-full border-2 border-primary-300 font-semibold"
                       >
                         {tag}
                       </span>

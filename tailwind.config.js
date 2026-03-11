@@ -9,11 +9,20 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          900: '#0c4a6e',
+          50: '#f0fffe',
+          100: '#e8f7f6',
+          200: '#d0eeeb',
+          300: '#a8deda',
+          500: '#16a39a',
+          600: '#0f8b8d',
+          700: '#0a6b6a',
+          900: '#053f3e',
+        },
+        accent: {
+          green: '#0f8b8d',
+          teal: '#16a39a',
+          dark: '#000000',
+          light: '#ffffff',
         },
         dark: {
           50: '#f8fafc',

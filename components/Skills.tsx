@@ -82,13 +82,39 @@ export default function Skills() {
   ]
 
   return (
-    <section id="skills" className="py-20 px-4 bg-gradient-to-b from-slate-900 to-slate-800" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="skills" className="py-20 px-4 bg-gradient-to-b from-white to-primary-50 relative overflow-hidden" ref={ref}>
+      {/* Background decorations */}
+      <motion.div 
+        className="absolute top-20 left-0 w-96 h-96 bg-primary-200/15 rounded-full blur-3xl"
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3]
+        }}
+        transition={{ 
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-0 right-10 w-80 h-80 bg-primary-300/10 rounded-full blur-3xl"
+        animate={{ 
+          scale: [1, 0.9, 1],
+          opacity: [0.2, 0.4, 0.2]
+        }}
+        transition={{ 
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-black via-primary-700 to-primary-600 bg-clip-text text-transparent"
         >
           Expertise & Tools
         </motion.h2>
@@ -104,11 +130,11 @@ export default function Skills() {
               whileHover={{ scale: 1.05, y: -5 }}
               className="group relative"
             >
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-300 text-center">
-                <div className={`text-3xl mb-3 bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`}>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border-2 border-primary-200 hover:border-primary-500 transition-all duration-300 text-center shadow-md hover:shadow-lg">
+                <div className={`text-3xl mb-3`}>
                   {skill.icon}
                 </div>
-                <h3 className="text-white font-medium text-sm group-hover:text-blue-400 transition-colors">
+                <h3 className="text-gray-800 font-bold text-sm group-hover:text-primary-700 transition-colors">
                   {skill.name}
                 </h3>
               </div>
@@ -122,17 +148,17 @@ export default function Skills() {
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50, rotateY: -30 }}
-              animate={isInView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              whileHover={{ scale: 1.05, rotateY: 5 }}
+              whileHover={{ scale: 1.05, y: -5 }}
               className="group relative"
             >
-              <div className={`absolute inset-0 bg-gradient-to-r ${category.bgGradient} rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110`} />
-              <div className="relative bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 group-hover:border-white/30 transition-all duration-500 shadow-2xl group-hover:shadow-cyan-500/25">
-                <div className="flex items-center justify-between mb-6">
+              <div className={`absolute inset-0 bg-gradient-to-r from-primary-300/20 to-primary-200/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110`} />
+              <div className="relative bg-white/80 backdrop-blur-lg rounded-2xl p-6 border-2 border-primary-200 group-hover:border-primary-500 transition-all duration-500 shadow-lg group-hover:shadow-xl group-hover:shadow-primary-300/30">
+                <div className="flex items-center justify-between mb-6 pb-4 border-b-2 border-primary-200">
                   <motion.h3
-                    className={`text-2xl font-bold bg-gradient-to-r ${category.gradient} bg-clip-text text-transparent`}
+                    className={`text-2xl font-bold text-black group-hover:text-primary-700 transition-colors`}
                     whileHover={{ scale: 1.1 }}
                   >
                     {category.title}
@@ -155,15 +181,15 @@ export default function Skills() {
                       whileHover={{ scale: 1.05, x: 10 }}
                       className="relative group/skill"
                     >
-                      <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} opacity-0 group-hover/skill:opacity-20 rounded-lg blur-sm transition-all duration-300`} />
-                      <div className="relative bg-slate-800/50 hover:bg-slate-700/50 px-4 py-3 rounded-lg text-gray-300 hover:text-white transition-all duration-300 border border-slate-700/50 hover:border-slate-600">
+                      <div className="absolute inset-0 bg-primary-400/10 opacity-0 group-hover/skill:opacity-100 rounded-lg blur-sm transition-all duration-300" />
+                      <div className="relative bg-primary-100 hover:bg-primary-200 px-4 py-3 rounded-lg text-gray-800 hover:text-primary-800 transition-all duration-300 border-2 border-primary-200 hover:border-primary-400 font-semibold">
                         <div className="flex items-center justify-between">
-                          <span className="font-medium">{skill}</span>
+                          <span>{skill}</span>
                           <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: index * 0.2 + skillIndex * 0.1 + 0.8 }}
-                            className={`w-2 h-2 bg-gradient-to-r ${category.gradient} rounded-full opacity-0 group-hover/skill:opacity-100 transition-opacity duration-300`}
+                            className={`w-2 h-2 bg-primary-600 rounded-full opacity-0 group-hover/skill:opacity-100 transition-opacity duration-300`}
                           />
                         </div>
                       </div>

@@ -9,7 +9,7 @@ import Navigation from '@/components/Navigation'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-x-hidden">
+    <main className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-100 overflow-x-hidden">
       <Navigation />
       <Hero />
       <About />

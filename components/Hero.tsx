@@ -33,14 +33,14 @@ export default function Hero() {
     return () => clearInterval(roleTimer)
   }, [])
 
-  const floatingElements = Array.from({ length: 8 }, (_, i) => (
+  const floatingElements = Array.from({ length: 12 }, (_, i) => (
     <motion.div
       key={i}
-      className="absolute w-1 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full opacity-60"
+      className="absolute w-2 h-2 bg-gradient-to-r from-primary-500 to-primary-400 rounded-full opacity-40"
       animate={{
         x: [0, Math.random() * 100 - 50, 0],
         y: [0, Math.random() * 100 - 50, 0],
-        opacity: [0, 0.6, 0],
+        opacity: [0, 0.4, 0],
         scale: [0, 1, 0],
       }}
       transition={{
@@ -57,13 +57,13 @@ export default function Hero() {
   ))
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-12 relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/80 to-slate-900">
-      {/* Simplified animated background */}
+    <section className="min-h-screen flex items-center justify-center px-4 py-12 relative overflow-hidden bg-gradient-to-br from-primary-50 via-primary-50/50 to-primary-100/80">
+      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {floatingElements}
         
         <motion.div 
-          className="absolute w-96 h-96 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 rounded-full blur-3xl"
+          className="absolute w-96 h-96 bg-gradient-to-r from-primary-400/15 via-primary-300/15 to-primary-200/15 rounded-full blur-3xl"
           animate={{ 
             x: [0, 50, -25, 0],
             y: [0, -50, 25, 0],
@@ -74,10 +74,10 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          style={{ top: '20%', left: '20%' }}
+          style={{ top: '10%', left: '10%' }}
         />
         <motion.div 
-          className="absolute w-80 h-80 bg-gradient-to-r from-pink-500/10 via-yellow-500/10 to-cyan-500/10 rounded-full blur-3xl"
+          className="absolute w-80 h-80 bg-gradient-to-r from-primary-500/10 via-primary-400/10 to-primary-300/10 rounded-full blur-3xl"
           animate={{ 
             x: [0, -50, 25, 0],
             y: [0, 50, -25, 0],
@@ -88,7 +88,7 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          style={{ bottom: '20%', right: '20%' }}
+          style={{ bottom: '15%', right: '5%' }}
         />
       </div>
 
@@ -98,11 +98,11 @@ export default function Hero() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-white space-y-8 lg:pr-8"
+          className="text-black space-y-8 lg:pr-8"
         >
           <div className="space-y-4">
             <motion.h1 
-              className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-black via-primary-600 to-primary-700 bg-clip-text text-transparent leading-tight"
               animate={{
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
               }}
@@ -116,7 +116,7 @@ export default function Hero() {
               <motion.span
                 animate={{ opacity: [1, 0] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
-                className="text-cyan-400"
+                className="text-primary-600"
               >
                 |
               </motion.span>
@@ -135,7 +135,7 @@ export default function Hero() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -50, opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-lg md:text-2xl lg:text-3xl bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent font-semibold"
+              className="text-lg md:text-2xl lg:text-3xl bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent font-bold"
             >
               {roles[currentRole]}
             </motion.h2>
@@ -145,7 +145,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2, duration: 0.8 }}
-            className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-2xl"
+            className="text-gray-700 text-lg md:text-xl leading-relaxed max-w-2xl"
           >
             Experienced Backend Developer and DevOps Engineer with expertise in Node.js, scalable APIs, and microservices. 
             Skilled in cloud infrastructure management and passionate about building intelligent systems.
@@ -158,9 +158,9 @@ export default function Hero() {
             className="flex flex-wrap gap-6 pt-6"
           >
             { [
-              { href: "#about", icon: "fa-user", text: "About Me", gradient: "from-cyan-500 to-blue-500" },
-              { href: "#projects", icon: "fa-rocket", text: "Projects", gradient: "from-purple-500 to-pink-500" },
-              { href: "#contact", icon: "fa-envelope", text: "Contact", gradient: "from-orange-500 to-red-500" }
+              { href: "#about", icon: "fa-user", text: "About Me", gradient: "from-primary-500 to-primary-600" },
+              { href: "#projects", icon: "fa-rocket", text: "Projects", gradient: "from-primary-600 to-primary-700" },
+              { href: "#contact", icon: "fa-envelope", text: "Contact", gradient: "from-primary-400 to-primary-500" }
             ].map((link, index) => (
               <motion.a
                 key={link.href}
@@ -176,10 +176,10 @@ export default function Hero() {
                 whileTap={{ scale: 0.95 }}
                 className="group relative overflow-hidden"
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${link.gradient} opacity-0 group-hover:opacity-20 transition-all duration-300 blur-sm`} />
-                <div className="relative flex items-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 group-hover:border-white/30 transition-all duration-300">
-                  <i className={`fa-solid ${link.icon} text-cyan-400 group-hover:text-white transition-colors`} />
-                  <span className="text-white group-hover:text-gray-100 transition-colors font-medium">{link.text}</span>
+                <div className={`absolute inset-0 bg-gradient-to-r ${link.gradient} opacity-0 group-hover:opacity-10 transition-all duration-300 blur-sm`} />
+                <div className="relative flex items-center gap-3 px-6 py-3 bg-black/5 backdrop-blur-sm rounded-xl border-2 border-primary-200 group-hover:border-primary-500 group-hover:bg-primary-50 transition-all duration-300">
+                  <i className={`fa-solid ${link.icon} text-primary-600 group-hover:text-primary-700 transition-colors`} />
+                  <span className="text-black group-hover:text-primary-700 transition-colors font-bold">{link.text}</span>
                 </div>
               </motion.a>
             ))}
@@ -193,43 +193,72 @@ export default function Hero() {
           transition={{ delay: 1, duration: 0.8 }}
           className="flex justify-center lg:justify-end"
         >
+        <motion.div
+          animate={{ 
+            y: [0, -15, 0],
+            rotateZ: [-2, 2, -2],
+          }}
+          transition={{ 
+            y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+            rotateZ: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+          }}
+          className="relative group"
+        >
+          {/* Outer glowing border animation */}
           <motion.div
+            className="absolute -inset-3 rounded-2xl"
             animate={{ 
-              y: [0, -10, 0],
+              boxShadow: [
+                "0 0 20px rgba(22, 163, 154, 0.3)",
+                "0 0 40px rgba(22, 163, 154, 0.6)",
+                "0 0 20px rgba(22, 163, 154, 0.3)"
+              ],
+              scale: [0.95, 1.05, 0.95]
             }}
-            transition={{ 
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut"
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+          
+          {/* Animated gradient border */}
+          <motion.div
+            className="absolute inset-0 rounded-2xl"
+            animate={{ 
+              scale: [1, 1.03, 1],
+              opacity: [0.4, 0.8, 0.4]
             }}
-            className="relative group"
+            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            {/* Simplified animated rings */}
-            <motion.div
-              className="absolute inset-0 rounded-full"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            >
-              <div className="w-full h-full rounded-full border border-dashed border-cyan-400/20" />
-            </motion.div>
-            
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-purple-400/20 to-pink-400/20 rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
-            <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/20 backdrop-blur-sm group-hover:scale-105 transition-transform duration-500">
-              <Image
-                src="/images/Profile-H.jpeg"
-                alt="Hemanth Naidu Bugatha"
-                fill
-                className="object-cover object-top scale-[1.25] group-hover:scale-[1.35] transition-transform duration-700"
-                priority
-                sizes="(max-width: 400px) 300px, 304px"
-              />
-
-            </div>
+            <div className="w-full h-full rounded-2xl border-2 border-primary-400" />
           </motion.div>
+          
+          {/* Shine/shimmer effect */}
+          <motion.div
+            className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white to-transparent opacity-0"
+            animate={{ 
+              opacity: [0, 0.2, 0],
+              x: [-100, 100, -100]
+            }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          />
+          
+          {/* Inner glow */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-400/20 via-primary-300/10 to-primary-200/20 rounded-2xl blur-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          {/* Image container */}
+          <div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border-4 border-primary-200 backdrop-blur-sm group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-primary-300/30">
+            <Image
+              src="/images/Profile-H.jpeg"
+              alt="Hemanth Naidu Bugatha"
+              fill
+              className="object-cover object-top scale-100 group-hover:scale-110 transition-transform duration-700"
+              priority
+              sizes="(max-width: 400px) 256px, 320px"
+            />
+          </div>
+        </motion.div>
         </motion.div>
       </div>
 
-      {/* Simplified scroll indicator */}
+      {/* Scroll indicator */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -241,9 +270,9 @@ export default function Hero() {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-gray-400 text-sm">Scroll Down</span>
+          <span className="text-primary-600 text-sm font-medium">Scroll Down</span>
           <motion.i 
-            className="fa-solid fa-chevron-down text-xl text-cyan-400/70"
+            className="fa-solid fa-chevron-down text-xl text-primary-500"
             animate={{ 
               opacity: [0.4, 1, 0.4]
             }}
