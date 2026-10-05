@@ -1,247 +1,178 @@
 'use client'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import SectionHeading from './SectionHeading'
+
+const projects = [
+  {
+    title: 'Debugger-AI',
+    subtitle: 'AI agent for developer error resolution',
+    description:
+      'An intelligent debugging assistant using RAG pipelines to pull accurate, contextual solutions from StackOverflow and Reddit for any error a developer pastes in.',
+    features: ['RAG pipeline for retrieval', 'StackOverflow & Reddit API integration', 'Pinecone vector similarity search'],
+    link: 'https://github.com/Hemanthbugata/Debugger_AI',
+    linkText: 'View on GitHub',
+    icon: 'fa-solid fa-robot',
+    tags: ['AI', 'RAG', 'Python', 'Pinecone', 'NLP'],
+    accent: 'from-violet-500 to-fuchsia-500',
+  },
+  {
+    title: 'Product Inventory Management',
+    subtitle: 'Full-stack e-commerce platform with payments',
+    description:
+      'Inventory platform with SMS OTP auth, real-time location mapping, Cashfree payments, and delivery tracking, deployed to GCP Cloud Run on a custom domain.',
+    features: ['SMS OTP via SMSHub API', 'Cashfree payment gateway', 'Deployed on GCP Cloud Run'],
+    link: 'https://myf.co.in',
+    linkText: 'Visit Live Site',
+    icon: 'fa-solid fa-store',
+    tags: ['React', 'Express', 'Node.js', 'MongoDB', 'GCP'],
+    accent: 'from-emerald-500 to-teal-500',
+  },
+  {
+    title: 'BitLogix',
+    subtitle: 'Supply chain DApp on BitTorrent Chain',
+    description:
+      'A decentralized supply chain application giving businesses real-time transparency, secure on-chain transactions, and streamlined logistics.',
+    features: ['Real-time supply chain visibility', 'Secure on-chain transactions', 'Deployed on BitTorrent Chain'],
+    link: 'https://bitlogix.vercel.app/',
+    linkText: 'View BitLogix',
+    icon: 'fa-solid fa-link',
+    tags: ['Blockchain', 'DApp', 'Web3', 'Solidity'],
+    accent: 'from-blue-500 to-indigo-500',
+  },
+  {
+    title: 'Swiggy Clone Deployment Pipeline',
+    subtitle: 'AWS EKS with end-to-end DevOps',
+    description:
+      'A secure, scalable deployment pipeline on Amazon EKS with automated infrastructure provisioning, GitOps delivery, and integrated security scanning.',
+    features: ['Terraform-provisioned EKS', 'Jenkins + Argo CD pipeline', 'SonarQube & Trivy scanning'],
+    link: 'https://github.com/Hemanthbugata/Swiggy_deployment',
+    linkText: 'View on GitHub',
+    icon: 'fa-solid fa-diagram-project',
+    tags: ['AWS', 'Kubernetes', 'Terraform', 'CI/CD'],
+    accent: 'from-orange-500 to-amber-500',
+  },
+  {
+    title: 'Water Body Extraction from SAR',
+    subtitle: 'Deep learning on GCP Vertex AI',
+    description:
+      'CNN-based segmentation model for detecting water bodies in SAR imagery under challenging conditions, enabling real-time flood detection.',
+    features: ['CNN segmentation model', 'Trained on Vertex AI', 'IoU above 85%'],
+    link: null,
+    linkText: 'Research Project',
+    icon: 'fa-solid fa-satellite',
+    tags: ['Deep Learning', 'CNN', 'GCP', 'Computer Vision'],
+    accent: 'from-cyan-500 to-sky-500',
+  },
+  {
+    title: 'Spring Boot Microservices on Istio',
+    subtitle: 'Kubernetes service mesh architecture',
+    description:
+      'Kubernetes-based microservices with Istio service mesh for traffic control, mTLS security, and full observability through Kiali.',
+    features: ['Istio traffic management', 'mTLS between services', 'Kiali observability'],
+    link: null,
+    linkText: 'Architecture Project',
+    icon: 'fa-solid fa-network-wired',
+    tags: ['Kubernetes', 'Istio', 'Spring Boot', 'Microservices'],
+    accent: 'from-rose-500 to-red-500',
+  },
+  {
+    title: 'Foundry',
+    subtitle: 'Registry of production-ready components',
+    description:
+      'A central registry of copy-paste, production-ready snippets across frontend, backend, database, and DevOps — with secure admin governance and public read access.',
+    features: ['React + FastAPI full-stack', 'JWT-secured admin', 'Language-aware one-click copy'],
+    link: 'https://foundry-0v8v.onrender.com/',
+    linkText: 'Visit Foundry',
+    icon: 'fa-solid fa-boxes-stacked',
+    tags: ['React', 'TypeScript', 'FastAPI', 'SQLAlchemy'],
+    accent: 'from-indigo-500 to-blue-500',
+  },
+  {
+    title: 'ShowTimeX',
+    subtitle: 'Movie ticket booking platform',
+    description:
+      'End-to-end booking app with authentication, advanced search, interactive seat booking, and an admin dashboard for movies and bookings.',
+    features: ['Auth & signup flows', 'Interactive booking system', 'Admin dashboard'],
+    link: 'https://github.com/gh-ust-bugatahemanth-naidu/ShowTimeX.git',
+    linkText: 'View on GitHub',
+    icon: 'fa-solid fa-ticket',
+    tags: ['React', 'TypeScript', 'FastAPI', 'SQLite', 'Vite'],
+    accent: 'from-pink-500 to-rose-500',
+  },
+]
 
 export default function Projects() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-
-  const projects = [
-    {
-      title: "Debugger-AI",
-      subtitle: "AI Agent for Developer Error Resolution",
-      description: "An intelligent debugging assistant that leverages RAG pipelines to fetch accurate solutions from StackOverflow and Reddit APIs. When developers input errors, it provides precise, contextual answers directly framed from community solutions.",
-      features: [
-        "RAG pipeline for intelligent data retrieval",
-        "StackOverflow and Reddit API integration",
-        "Pinecone vector database for similarity search",
-        "Context-aware error resolution",
-        "Real-time solution recommendation engine"
-      ],
-      link: "https://github.com/Hemanthbugata/Debugger_AI",
-      linkText: "View on GitHub",
-      tags: ["AI", "RAG", "Python", "Pinecone", "StackOverflow API", "NLP"],
-      gradient: "from-violet-500 to-purple-500"
-    },
-    {
-      title: "Product Inventory Management System",
-      subtitle: "Full-Stack E-commerce Platform with Payment Integration",
-      description: "A comprehensive inventory management system featuring SMS-based OTP authentication, real-time location mapping, integrated payment gateway, and delivery tracking with seamless deployment on Google Cloud Platform.",
-      features: [
-        "SMS OTP authentication via SMSHub API",
-        "One-click location mapping and geolocation",
-        "Cashfree payment gateway integration",
-        "Real-time delivery tracking with API integration",
-        "Deployed on GCP Cloud Run with custom domain"
-      ],
-      link: "https://myf.co.in",
-      linkText: "Visit Live Site",
-      tags: ["React.js", "Express.js", "Node.js", "MongoDB", "GCP", "Payment Gateway"],
-      gradient: "from-emerald-500 to-teal-500"
-    },
-    {
-      title: "BitLogix - DApp Based on Supply Chain Management",
-      subtitle: "Deployed on BitTorrent Blockchain",
-      description: "A pioneering DApp solution built on the BitTorrent-chain that empowers businesses with real-time transparency, secure transactions, and streamlined operations in supply chain management.",
-      features: [
-        "Real-time transparency across supply chain",
-        "Secure blockchain transactions",
-        "Streamlined logistics operations",
-        "Deployed on BitTorrent-chain"
-      ],
-      link: "https://bitlogix.vercel.app/",
-      linkText: "View BitLogix",
-      tags: ["Blockchain", "DApp", "Supply Chain", "BitTorrent", "Web3"],
-      gradient: "from-blue-500 to-purple-500"
-    },
-    {
-      title: "Scalable Deployment Pipeline for Swiggy Clone",
-      subtitle: "AWS EKS with Complete DevOps Pipeline",
-      description: "Built a secure and scalable deployment pipeline leveraging Amazon EKS for container orchestration with automated infrastructure provisioning and CI/CD integration.",
-      features: [
-        "Amazon EKS container orchestration",
-        "Terraform infrastructure automation",
-        "Jenkins and ArgoCD CI/CD pipeline",
-        "SonarQube and Trivy security scanning"
-      ],
-      link: "https://github.com/Hemanthbugata/Swiggy_deployment",
-      linkText: "View on GitHub",
-      tags: ["AWS", "Kubernetes", "DevOps", "CI/CD", "Terraform"],
-      gradient: "from-green-500 to-blue-500"
-    },
-    {
-      title: "Extraction of Water Bodies from SAR Images",
-      subtitle: "Deep Learning with GCP Vertex AI",
-      description: "Designed a CNN-based deep learning model for accurate segmentation of water bodies from SAR images, handling challenging conditions and achieving high accuracy.",
-      features: [
-        "CNN-based water body segmentation",
-        "GCP Vertex AI for model training",
-        "High segmentation accuracy (IoU > 85%)",
-        "Real-time flood detection capabilities"
-      ],
-      link: "#",
-      linkText: "Research Project",
-      tags: ["Deep Learning", "CNN", "GCP", "Computer Vision", "AI"],
-      gradient: "from-teal-500 to-cyan-500"
-    },
-    {
-      title: "Springboot Microservices Deployment",
-      subtitle: "Kubernetes with Istio Service Mesh",
-      description: "Deployed a Kubernetes-based microservices architecture with Istio service mesh capabilities, enabling traffic control, enhanced security, and comprehensive observability.",
-      features: [
-        "Kubernetes microservices architecture",
-        "Istio service mesh integration",
-        "Traffic control and security",
-        "Kiali monitoring and observability"
-      ],
-      link: "#",
-      linkText: "Architecture Project",
-      tags: ["Kubernetes", "Microservices", "Istio", "Spring Boot", "DevOps"],
-      gradient: "from-orange-500 to-red-500"
-    },
-    {
-      title: "Foundry",
-      subtitle: "Central Registry of Reusable Production-Ready Components",
-      description: "A comprehensive component registry featuring copy-paste production-ready code snippets across frontend, backend, database, and DevOps domains. Enterprise-ready patterns with secure admin governance and public read-only access for team collaboration.",
-      features: [
-        "Copy-paste production-ready code snippets",
-        "Full-stack React + FastAPI solution",
-        "Language-aware formatting with one-click copy",
-        "Enterprise-grade component management",
-        "Secure JWT authentication",
-        "Public read-only sharing capabilities"
-      ],
-      link: "https://foundry-0v8v.onrender.com/",
-      linkText: "Visit Foundry",
-      tags: ["React", "TypeScript", "FastAPI", "SQLAlchemy", "Full-Stack"],
-      gradient: "from-indigo-500 to-blue-500"
-    },
-    {
-      title: "ShowTimeX",
-      subtitle: "Full-Stack Movie Ticket Booking Platform",
-      description: "A complete movie ticket booking application with user authentication, advanced search, interactive booking system, and admin dashboard for content management. Built with modern React frontend and Python FastAPI backend.",
-      features: [
-        "User authentication and signup system",
-        "Movie browsing with advanced search",
-        "Interactive ticket booking and management",
-        "Admin dashboard for movies and bookings",
-        "Responsive design with modern UI",
-        "RESTful API architecture"
-      ],
-      link: "https://github.com/gh-ust-bugatahemanth-naidu/ShowTimeX.git",
-      linkText: "View on GitHub",
-      tags: ["React", "TypeScript", "FastAPI", "SQLite", "Vite", "Full-Stack"],
-      gradient: "from-pink-500 to-rose-500"
-    }
-  ]
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="projects" className="py-20 px-4 bg-primary-100/50 relative overflow-hidden" ref={ref}>
-      {/* Background decorations */}
-      <motion.div 
-        className="absolute top-0 left-10 w-80 h-80 bg-primary-300/15 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.5, 0.3]
-        }}
-        transition={{ 
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div 
-        className="absolute bottom-10 right-10 w-96 h-96 bg-primary-200/10 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 0.9, 1],
-          opacity: [0.2, 0.4, 0.2]
-        }}
-        transition={{ 
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-black via-primary-700 to-primary-600 bg-clip-text text-transparent"
-        >
-          Featured Projects
-        </motion.h2>
+    <section id="projects" className="relative py-28 px-4 overflow-hidden" ref={ref}>
+      <div className="absolute -left-40 top-1/2 w-[30rem] h-[30rem] rounded-full bg-primary-500/10 blur-[120px]" />
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <SectionHeading
+          index="04"
+          eyebrow="Projects"
+          title="Selected work"
+          description="Full-stack products, cloud pipelines, and experiments across AI and Web3."
+          inView={isInView}
+        />
+
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {projects.map((p, i) => (
+            <motion.article
+              key={p.title}
+              initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
-              className="group relative"
+              transition={{ duration: 0.6, delay: (i % 3) * 0.1 }}
+              whileHover={{ y: -8 }}
+              className="group relative glass glass-hover rounded-2xl p-6 flex flex-col h-full overflow-hidden"
             >
-              <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-15 rounded-xl blur-xl transition-all duration-300`}></div>
-              
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-xl p-8 border-2 border-primary-200 group-hover:border-primary-500 transition-all duration-300 h-full flex flex-col shadow-lg hover:shadow-xl hover:shadow-primary-300/20">
-                <div className="flex-grow">
-                  <h3 className="text-2xl font-bold text-black mb-2 group-hover:text-primary-700 transition-colors">
-                    {project.title}
-                  </h3>
-                  <h4 className="text-lg text-primary-600 font-semibold mb-4 opacity-90">
-                    {project.subtitle}
-                  </h4>
-                  
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    {project.description}
-                  </p>
+              <div
+                className={`absolute -top-20 -right-20 h-40 w-40 rounded-full bg-gradient-to-br ${p.accent} opacity-0 group-hover:opacity-25 blur-3xl transition-opacity duration-500`}
+              />
 
-                  <div className="mb-6">
-                    <h5 className="text-black font-bold mb-3">Key Features:</h5>
-                    <ul className="space-y-2">
-                      {project.features.map((feature, featureIndex) => (
-                        <motion.li
-                          key={featureIndex}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={isInView ? { opacity: 1, x: 0 } : {}}
-                          transition={{ duration: 0.5, delay: index * 0.2 + featureIndex * 0.1 + 0.5 }}
-                          className="text-gray-700 flex items-start"
-                        >
-                          <span className="text-primary-600 mr-2 mt-1 font-bold">•</span>
-                          {feature}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="px-3 py-1 text-xs bg-primary-100 text-primary-700 rounded-full border-2 border-primary-300 font-semibold"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <motion.a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`inline-flex items-center gap-2 bg-gradient-to-r ${project.gradient} hover:shadow-lg text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 self-start`}
-                >
-                  <i className="fa-solid fa-external-link-alt"></i>
-                  {project.linkText}
-                </motion.a>
+              <div className="relative flex items-start justify-between mb-5">
+                <span className={`h-12 w-12 rounded-xl bg-gradient-to-br ${p.accent} text-white flex items-center justify-center text-xl shadow-card`}>
+                  <i className={p.icon} />
+                </span>
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={p.linkText}
+                    className="h-10 w-10 rounded-lg flex items-center justify-center text-muted hover:text-heading hover:bg-line/10 transition-colors"
+                  >
+                    <i className="fa-solid fa-arrow-up-right-from-square" />
+                  </a>
+                )}
               </div>
-            </motion.div>
+
+              <h3 className="relative font-display text-xl font-bold text-heading mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">
+                {p.title}
+              </h3>
+              <p className="relative text-sm text-primary-600 dark:text-primary-400 font-medium mb-4">{p.subtitle}</p>
+              <p className="relative text-muted text-[15px] leading-relaxed mb-5 flex-grow">{p.description}</p>
+
+              <ul className="relative space-y-1.5 mb-5">
+                {p.features.map((f) => (
+                  <li key={f} className="flex gap-2 text-sm text-muted">
+                    <i className="fa-solid fa-circle-check text-primary-500 mt-1 text-xs" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="relative flex flex-wrap gap-2 pt-4 border-t border-line/5">
+                {p.tags.map((t) => (
+                  <span key={t} className="px-2.5 py-1 rounded-md text-xs font-medium bg-line/5 text-body">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>

@@ -1,201 +1,118 @@
 'use client'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import SectionHeading from './SectionHeading'
+
+const coreStack = [
+  { name: 'Angular', icon: 'fab fa-angular', color: 'text-red-500' },
+  { name: 'Java', icon: 'fab fa-java', color: 'text-orange-500' },
+  { name: 'Spring Boot', icon: 'fas fa-leaf', color: 'text-green-500' },
+  { name: 'React', icon: 'fab fa-react', color: 'text-cyan-500' },
+  { name: 'Node.js', icon: 'fab fa-node-js', color: 'text-lime-500' },
+  { name: 'Python', icon: 'fab fa-python', color: 'text-yellow-500' },
+  { name: 'MongoDB', icon: 'fas fa-database', color: 'text-emerald-500' },
+  { name: 'SQL', icon: 'fas fa-table', color: 'text-sky-500' },
+  { name: 'AWS', icon: 'fab fa-aws', color: 'text-amber-500' },
+  { name: 'Azure', icon: 'fab fa-microsoft', color: 'text-blue-500' },
+  { name: 'GCP', icon: 'fab fa-google', color: 'text-rose-500' },
+  { name: 'Docker', icon: 'fab fa-docker', color: 'text-sky-500' },
+  { name: 'Kubernetes', icon: 'fas fa-dharmachakra', color: 'text-indigo-500' },
+  { name: 'Jenkins', icon: 'fab fa-jenkins', color: 'text-muted' },
+  { name: 'Git', icon: 'fab fa-git-alt', color: 'text-orange-600' },
+  { name: 'Linux', icon: 'fab fa-linux', color: 'text-yellow-600 dark:text-yellow-200' },
+]
+
+const categories = [
+  {
+    title: 'Frontend',
+    icon: 'fa-solid fa-window-maximize',
+    skills: ['Angular', 'React.js', 'Next.js', 'TypeScript', 'JavaScript', 'HTML / CSS', 'Tailwind CSS'],
+  },
+  {
+    title: 'Backend',
+    icon: 'fa-solid fa-server',
+    skills: ['Java', 'Spring Boot', 'REST APIs', 'Microservices', 'Node.js', 'Express.js', 'FastAPI'],
+  },
+  {
+    title: 'Databases',
+    icon: 'fa-solid fa-database',
+    skills: ['SQL', 'MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'SQLite'],
+  },
+  {
+    title: 'Cloud & DevOps',
+    icon: 'fa-solid fa-cloud-arrow-up',
+    skills: ['AWS', 'Azure', 'GCP', 'Docker', 'Kubernetes', 'Terraform', 'Jenkins', 'Argo CD', 'CI/CD'],
+  },
+  {
+    title: 'Integrations & Tooling',
+    icon: 'fa-solid fa-plug',
+    skills: ['Workday APIs', 'Git', 'Linux', 'Ansible', 'Prometheus', 'Grafana', 'SonarQube'],
+  },
+  {
+    title: 'Blockchain & AI',
+    icon: 'fa-solid fa-microchip',
+    skills: ['Solidity', 'Ether.js', 'Web3.js', 'RAG Pipelines', 'Pinecone', 'Vertex AI'],
+  },
+]
 
 export default function Skills() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-
-  const skills = [
-    { name: 'HTML', icon: '🌐', color: 'from-orange-400 to-red-400' },
-    { name: 'CSS', icon: '🎨', color: 'from-blue-400 to-cyan-400' },
-    { name: 'JavaScript', icon: '⚡', color: 'from-yellow-400 to-orange-400' },
-    { name: 'React.js', icon: '⚛️', color: 'from-cyan-400 to-blue-400' },
-    { name: 'Java', icon: '☕', color: 'from-red-400 to-orange-400' },
-    { name: 'Python', icon: '🐍', color: 'from-green-400 to-blue-400' },
-    { name: 'Node.js', icon: '🟢', color: 'from-green-400 to-emerald-400' },
-    { name: 'Express.js', icon: '🚀', color: 'from-gray-400 to-gray-600' },
-    { name: 'Next.js', icon: '▲', color: 'from-black to-gray-600' },
-    { name: 'Blockchain', icon: '🔗', color: 'from-purple-400 to-pink-400' },
-    { name: 'Solidity', icon: '💎', color: 'from-indigo-400 to-purple-400' },
-    { name: 'Ether.js', icon: '💰', color: 'from-blue-400 to-purple-400' },
-    { name: 'MongoDB', icon: '🍃', color: 'from-green-500 to-green-600' },
-    { name: 'SQL', icon: '🗄️', color: 'from-blue-500 to-indigo-500' },
-    { name: 'Linux', icon: '🐧', color: 'from-yellow-400 to-orange-400' },
-    { name: 'GIT', icon: '📝', color: 'from-orange-400 to-red-400' },
-    { name: 'Terraform', icon: '🏗️', color: 'from-purple-400 to-blue-400' },
-    { name: 'Ansible', icon: '🔧', color: 'from-red-400 to-pink-400' },
-    { name: 'Jenkins', icon: '⚙️', color: 'from-blue-400 to-cyan-400' },
-    { name: 'Docker', icon: '🐳', color: 'from-blue-400 to-cyan-400' },
-    { name: 'Kubernetes', icon: '☸️', color: 'from-blue-500 to-indigo-500' },
-    { name: 'Prometheus & Grafana', icon: '📊', color: 'from-orange-400 to-red-400' },
-    { name: 'Spring Boot', icon: '🍃', color: 'from-green-400 to-emerald-400' },
-    { name: 'AWS', icon: '☁️', color: 'from-orange-400 to-yellow-400' },
-    { name: 'Azure', icon: '🌤️', color: 'from-blue-400 to-cyan-400' },
-    { name: 'GCP', icon: '🌩️', color: 'from-red-400 to-yellow-400' },
-  ]
-
-  const skillCategories = [
-    {
-      title: 'Frontend',
-      icon: '💻',
-      gradient: 'from-cyan-400 to-blue-400',
-      bgGradient: 'from-cyan-500/10 to-blue-500/10',
-      skills: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Next.js'],
-    },
-    {
-      title: 'Backend',
-      icon: '⚙️',
-      gradient: 'from-green-400 to-emerald-400',
-      bgGradient: 'from-green-500/10 to-emerald-500/10',
-      skills: ['Node.js', 'Express.js', 'Spring Boot', 'Django', 'Flask'],
-    },
-    {
-      title: 'Database',
-      icon: '🗄️',
-      gradient: 'from-blue-500 to-indigo-500',
-      bgGradient: 'from-blue-500/10 to-indigo-500/10',
-      skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'SQLite', 'Redis'],
-    },
-    {
-      title: 'DevOps',
-      icon: '🛠️',
-      gradient: 'from-orange-400 to-yellow-400',
-      bgGradient: 'from-orange-500/10 to-yellow-500/10',
-      skills: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'Terraform'],
-    },
-    {
-      title: 'Blockchain',
-      icon: '🔗',
-      gradient: 'from-purple-400 to-pink-400',
-      bgGradient: 'from-purple-500/10 to-pink-500/10',
-      skills: ['Solidity', 'Ether.js', 'Web3.js', 'Truffle', 'Ganache'],
-    },
-    {
-      title: 'Others',
-      icon: '📚',
-      gradient: 'from-gray-400 to-gray-600',
-      bgGradient: 'from-gray-500/10 to-gray-600/10',
-      skills: ['Git', 'Linux', 'Ansible', 'Jenkins', 'Prometheus & Grafana'],
-    },
-  ]
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="skills" className="py-20 px-4 bg-gradient-to-b from-white to-primary-50 relative overflow-hidden" ref={ref}>
-      {/* Background decorations */}
-      <motion.div 
-        className="absolute top-20 left-0 w-96 h-96 bg-primary-200/15 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3]
-        }}
-        transition={{ 
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div 
-        className="absolute bottom-0 right-10 w-80 h-80 bg-primary-300/10 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 0.9, 1],
-          opacity: [0.2, 0.4, 0.2]
-        }}
-        transition={{ 
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-black via-primary-700 to-primary-600 bg-clip-text text-transparent"
-        >
-          Expertise & Tools
-        </motion.h2>
+    <section id="skills" className="relative py-28 px-4 overflow-hidden" ref={ref}>
+      <div className="absolute inset-0 bg-grid opacity-60" />
+      <div className="absolute -right-40 bottom-0 w-[30rem] h-[30rem] rounded-full bg-accent-500/10 blur-[120px]" />
 
-        {/* Skills Icon Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 mb-20">
-          {skills.map((skill, index) => (
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <SectionHeading
+          index="03"
+          eyebrow="Skills"
+          title="Tools I work with"
+          description="The stack I use in production today, plus the cloud and DevOps tooling I bring to every project."
+          inView={isInView}
+        />
+
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 mb-20">
+          {coreStack.map((s, i) => (
             <motion.div
-              key={skill.name}
+              key={s.name}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="group relative"
+              transition={{ duration: 0.4, delay: i * 0.04 }}
+              whileHover={{ y: -6, scale: 1.05 }}
+              className="glass glass-hover rounded-2xl p-4 flex flex-col items-center gap-2 text-center"
             >
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border-2 border-primary-200 hover:border-primary-500 transition-all duration-300 text-center shadow-md hover:shadow-lg">
-                <div className={`text-3xl mb-3`}>
-                  {skill.icon}
-                </div>
-                <h3 className="text-gray-800 font-bold text-sm group-hover:text-primary-700 transition-colors">
-                  {skill.name}
-                </h3>
-              </div>
-              <div className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300`}></div>
+              <i className={`${s.icon} ${s.color} text-3xl`} />
+              <span className="text-xs font-semibold text-body">{s.name}</span>
             </motion.div>
           ))}
         </div>
 
-        {/* Skill Categories with Animated Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {skillCategories.map((category, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map((c, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
+              key={c.title}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="group relative"
+              transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
+              className="glass glass-hover rounded-2xl p-6 group"
             >
-              <div className={`absolute inset-0 bg-gradient-to-r from-primary-300/20 to-primary-200/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110`} />
-              <div className="relative bg-white/80 backdrop-blur-lg rounded-2xl p-6 border-2 border-primary-200 group-hover:border-primary-500 transition-all duration-500 shadow-lg group-hover:shadow-xl group-hover:shadow-primary-300/30">
-                <div className="flex items-center justify-between mb-6 pb-4 border-b-2 border-primary-200">
-                  <motion.h3
-                    className={`text-2xl font-bold text-black group-hover:text-primary-700 transition-colors`}
-                    whileHover={{ scale: 1.1 }}
+              <div className="flex items-center gap-3 mb-5">
+                <span className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 border border-line/10 text-primary-600 dark:text-primary-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <i className={c.icon} />
+                </span>
+                <h3 className="font-display text-xl font-semibold text-heading">{c.title}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {c.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 rounded-lg text-sm font-medium bg-elevated text-body border border-line/5 hover:border-primary-500/40 hover:text-primary-700 dark:hover:text-primary-200 transition-colors"
                   >
-                    {category.title}
-                  </motion.h3>
-                  <motion.span
-                    className="text-3xl"
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  >
-                    {category.icon}
-                  </motion.span>
-                </div>
-                <div className="space-y-3">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skillIndex}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.5, delay: index * 0.2 + skillIndex * 0.1 + 0.5 }}
-                      whileHover={{ scale: 1.05, x: 10 }}
-                      className="relative group/skill"
-                    >
-                      <div className="absolute inset-0 bg-primary-400/10 opacity-0 group-hover/skill:opacity-100 rounded-lg blur-sm transition-all duration-300" />
-                      <div className="relative bg-primary-100 hover:bg-primary-200 px-4 py-3 rounded-lg text-gray-800 hover:text-primary-800 transition-all duration-300 border-2 border-primary-200 hover:border-primary-400 font-semibold">
-                        <div className="flex items-center justify-between">
-                          <span>{skill}</span>
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ delay: index * 0.2 + skillIndex * 0.1 + 0.8 }}
-                            className={`w-2 h-2 bg-primary-600 rounded-full opacity-0 group-hover/skill:opacity-100 transition-opacity duration-300`}
-                          />
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+                    {skill}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}

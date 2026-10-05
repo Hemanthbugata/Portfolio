@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+const v = (name) => `rgb(var(${name}) / <alpha-value>)`
+
 module.exports = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,68 +12,61 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: '#f0fffe',
-          100: '#e8f7f6',
-          200: '#d0eeeb',
-          300: '#a8deda',
-          500: '#16a39a',
-          600: '#0f8b8d',
-          700: '#0a6b6a',
-          900: '#053f3e',
+          50: v('--p-50'),
+          100: v('--p-100'),
+          200: v('--p-200'),
+          300: v('--p-300'),
+          400: v('--p-400'),
+          500: v('--p-500'),
+          600: v('--p-600'),
+          700: v('--p-700'),
+          800: v('--p-800'),
+          900: v('--p-900'),
         },
         accent: {
-          green: '#0f8b8d',
-          teal: '#16a39a',
-          dark: '#000000',
-          light: '#ffffff',
+          300: v('--a-300'),
+          400: v('--a-400'),
+          500: v('--a-500'),
+          600: v('--a-600'),
         },
-        dark: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          800: '#1e293b',
-          900: '#0f172a',
-        }
+        page: v('--c-page'),
+        elevated: v('--c-elevated'),
+        heading: v('--c-heading'),
+        body: v('--c-body'),
+        muted: v('--c-muted'),
+        line: v('--c-line'),
+        'on-primary': v('--c-on-primary'),
+        surface: {
+          950: '#040810',
+          900: '#080e1a',
+          800: '#0d1524',
+          700: '#131d30',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Sora', 'Inter', 'sans-serif'],
       },
       animation: {
-        'gradient': 'gradient 8s linear infinite',
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.5s ease-out',
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
+        'spin-slow': 'spin 24s linear infinite',
+        'spin-slower': 'spin 40s linear infinite reverse',
+        float: 'float 6s ease-in-out infinite',
+        'pulse-ring': 'pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
-        gradient: {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          },
-        },
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(100%)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+          '50%': { transform: 'translateY(-14px)' },
         },
-        glow: {
-          '0%': { boxShadow: '0 0 20px rgba(14, 165, 233, 0.5)' },
-          '100%': { boxShadow: '0 0 30px rgba(14, 165, 233, 0.8)' },
-        }
+        pulseRing: {
+          '0%': { transform: 'scale(1)', opacity: '0.8' },
+          '100%': { transform: 'scale(2.2)', opacity: '0' },
+        },
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      boxShadow: {
+        glow: '0 0 40px -10px rgb(var(--p-500) / 0.45)',
+        'glow-lg': '0 0 80px -20px rgb(var(--p-500) / 0.55)',
+        card: '0 20px 50px -20px rgb(var(--c-shadow) / 0.45)',
       },
     },
   },
